@@ -1,0 +1,66 @@
+﻿@model SurveyOnline.Models.ListTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Management/Views/Shared/_Layout.cshtml";
+     string CurrentUrl = HttpContext.Current.Request.Url.ToString();
+}
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Preview</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Survey Preview</li>
+                        </ol>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+        <div class=" col ">
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0">Details Table</h3>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <ul class="list-group">
+                        @foreach (var item in Model.ListTables)
+                        {
+                            <li class="list-group-item">@item.Name</li>
+                        }
+                        <li class="list-group-item">
+                            @Html.ActionLink("Add data", "Create", "Listtables", new { parentID = Model.ID, returnUrl = CurrentUrl }, null)
+                        </li>
+                    </ul>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                        @Html.ActionLink("Back to List", "Index")
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

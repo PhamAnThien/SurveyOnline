@@ -1,0 +1,286 @@
+﻿@model SurveyOnline.Models.QuestionSurvey
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Management/Views/Shared/_Layout.cshtml";
+    var a = ViewBag.QuestionTypeID as SelectList;
+    string CurrentUrl = HttpContext.Current.Request.Url.ToString();
+}
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Survey question</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Survey question</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    @Html.ActionLink("New", "Create", null, new { @class = "btn btn-sm btn-neutral" })
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0">Create survey question</h3>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveySubjectID, "Survey Subject", htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.DropDownList("SurveySubjectID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SurveySubjectID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SurveyGroupID, "Survey Group", htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.DropDownList("SurveyGroupID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SurveyGroupID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Sorter, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Sorter, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Sorter, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.QuestionTypeGroupID, "Question Type Group", htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.DropDownList("QuestionTypeGroupID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.QuestionTypeGroupID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.QuestionTypeID, "Question Type", htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.DropDownList("QuestionTypeID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.QuestionTypeID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.isConditionQuestion, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.isConditionQuestion)
+                                        @Html.ValidationMessageFor(model => model.isConditionQuestion, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ConditionQuestion d-none">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ConditionQuestionID, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.DropDownList("ConditionQuestionID", null, " ", htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ConditionQuestionID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ConditionValue, htmlAttributes: new { @class = "control-label" })
+                                    <div class="">
+                                        @Html.DropDownList("ConditionValue", null, "", htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.ConditionValue, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ListSource, "List Source", htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.DropDownList("ListSource", null, "", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.ListSource, "", new { @class = "text-danger" })
+                                </div>
+                                <a href="@Url.Action("Create","Listtables")">You need more Lists, Create here</a>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 ">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+           
+            $('#SurveySubjectID').on("change", function () {
+                console.log(this.value);
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: '@Url.Action("getListSurveyGroup","SurveyGroups")',
+                    data: { SubjectID: this.value },
+                    dataType: "Json",
+                    success: function (data) {
+
+                        // first remove the current options if any
+                        $('#SurveyGroupID').find('option').remove();
+
+                        // next iterate thru your object adding each option to the drop down\
+                        $(data).each(function (index, item) { // GETTING ERROR HERE
+                            $('#SurveyGroupID').append($('<option></option>').val(item.Value).html(item.Text));
+                        });
+                    },
+                    error: function ajaxError(response) {
+                        alert(response.status + ' ' + response.statusText);
+                    }
+                });
+            });
+            $('#SurveyGroupID').on("change", function () {
+                console.log(this.value);
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: '@Url.Action("getListSurveyGroup","SurveyGroups")',
+                    data: { SubjectID: this.value },
+                    dataType: "Json",
+                    success: function (data) {
+
+                        // first remove the current options if any
+                        $('#SurveyGroupID').find('option').remove();
+
+                        // next iterate thru your object adding each option to the drop down\
+                        $(data).each(function (index, item) { // GETTING ERROR HERE
+                            $('#SurveyGroupID').append($('<option></option>').val(item.Value).html(item.Text));
+                        });
+                    },
+                    error: function ajaxError(response) {
+                        alert(response.status + ' ' + response.statusText);
+                    }
+                });
+            });
+            $('#QuestionTypeGroupID').on("change", function () {
+                console.log(this.value);
+                 $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    url: '@Url.Action("getListQuestionType","QuestionTypes")',
+                    data: { GroupTypeQuestionID: this.value },
+                    dataType: "Json",
+                    success: function (data) {
+
+                        // first remove the current options if any
+                        $('#QuestionTypeID').find('option').remove();
+
+                        // next iterate thru your object adding each option to the drop down\
+                        $(data).each(function (index, item) { // GETTING ERROR HERE
+                            $('#QuestionTypeID').append($('<option></option>').val(item.Value).html(item.Text));
+                        });
+                    },
+                    error: function ajaxError(response) {
+                        alert(response.status + ' ' + response.statusText);
+                    }
+                });
+            });
+            $('#QuestionTypeID').on("change", function () {
+                console.log(this.value);
+            });
+            $('#isConditionQuestion').on("change", function () {
+                console.log(this.value);
+                if ($('#isConditionQuestion').is(':checked') == false)
+                    $('.ConditionQuestion').addClass("d-none");
+                else {
+                    $('.ConditionQuestion').removeClass("d-none");
+                     $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                         url: '@Url.Action("GetListQuestion","QuestionSurveys")',
+                         data: {
+                             SurveySubjectID: $('#SurveySubjectID').children("option:selected").val(),
+                               SurveyGroupID: $('#SurveyGroupID').children("option:selected").val()
+                         },
+                    dataType: "Json",
+                    success: function (data) {
+
+                        // first remove the current options if any
+                        $('#ConditionQuestionID').find('option').remove();
+                          $('#ConditionQuestionID').append($('<option></option>').val('').html(''));
+                        // next iterate thru your object adding each option to the drop down\
+                        $(data).each(function (index, item) { // GETTING ERROR HERE
+                            $('#ConditionQuestionID').append($('<option></option>').val(item.Value).html(item.Text));
+                        });
+                    },
+                    error: function ajaxError(response) {
+                        alert(response.status + ' ' + response.statusText);
+                    }
+                });
+                }
+            });
+            $('#ConditionQuestionID').on("change", function () {
+                console.log(this.value);
+
+                     $.ajax({
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                         url: '@Url.Action("getListSourceOfQuestion","QuestionSurveys")',
+                         data: {
+                             QuestionID: this.value
+                         },
+                    dataType: "Json",
+                    success: function (data) {
+
+                        // first remove the current options if any
+                        $('#ConditionValue').find('option').remove();
+                        $('#ConditionValue').append($('<option></option>').val('').html(''));
+                        // next iterate thru your object adding each option to the drop down\
+                        $(data).each(function (index, item) { // GETTING ERROR HERE
+                            $('#ConditionValue').append($('<option></option>').val(item.Value).html(item.Text));
+                        });
+                    },
+                    error: function ajaxError(response) {
+                        alert(response.status + ' ' + response.statusText);
+                    }
+                });
+
+            });
+        });
+    </script>
+}

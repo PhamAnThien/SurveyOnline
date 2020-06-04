@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SurveyOnline.Models.QuestionSurvey>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Management/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionType.QuestionTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionTypesGroup.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyGroup.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveySubject.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sorter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Question)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isConditionQuestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionQuestionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConditionValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ListSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionType.QuestionTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionTypesGroup.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveyGroup.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveySubject.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sorter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Question)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isConditionQuestion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConditionQuestionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConditionValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ListSource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

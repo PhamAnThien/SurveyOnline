@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SurveyOnline.Models.SurveySubject>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Management/Views/Shared/_Layout.cshtml";
+    string CurrentUrl = HttpContext.Current.Request.Url.ToString();
+}
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Survey</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#">Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Survey</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                    @Html.ActionLink("New", "Create", null, new { @class = "btn btn-sm btn-neutral" })
+                    <a href="#" class="btn btn-sm btn-neutral">Filters</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row justify-content-center">
+        <div class=" col ">
+            <div class="card">
+                <div class="card-header bg-transparent">
+                    <h3 class="mb-0">SURVEY</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-6">
+                                <div class="border m-2 rounded-top m-2">
+                                    <h3 class="rounded-top bg-blue text-center">@item.SubjectName</h3>
+                                    <p>@item.Description</p>
+                                    <p>@item.DescriptionFooter</p>
+                                    <div>
+                                        @Html.ActionLink("Add Group", "Create", "SurveyGroups", new { SubjectID = item.ID,returnUrl = CurrentUrl }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Add Question", "Create", "QuestionSurveys", new { SurveySubjectID = item.ID, returnUrl = CurrentUrl }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-warning" })
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
