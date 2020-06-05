@@ -18,6 +18,7 @@ namespace SurveyOnline.Models
         [Display(Name = "Description footer")]
         public string DescriptionFooter { set; get; }
 
+        public bool isActive { set; get; }
         public virtual ICollection<SurveyGroup> SurveyGroups { set; get; }
         public virtual ICollection<QuestionSurvey> QuestionSurveys { set; get; }
     }
