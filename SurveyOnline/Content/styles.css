@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
 * Start Bootstrap - Creative v6.0.1 (https://startbootstrap.com/themes/creative)
 * Copyright 2013-2020 Start Bootstrap
@@ -223,6 +223,7 @@ th {
 
 label {
   display: inline-block;
+  line-height:24px;
   margin-bottom: 0.5rem;
 }
 

@@ -60,5 +60,11 @@ namespace SurveyOnline.Controllers
             survey.SurveyGroups = SurveyGroups;
             return View(survey);
         }
+        [HttpPost]
+        public async Task<ActionResult> getSurveyAnswer(object value)
+        {
+
+            return RedirectToAction("Index");
+        }
     }
 }
