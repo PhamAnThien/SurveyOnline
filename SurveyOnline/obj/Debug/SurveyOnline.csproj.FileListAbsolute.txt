@@ -503,3 +503,6 @@ E:\New folder (3)\SurveyOnline\SurveyOnline\obj\Debug\SurveyOnline.csproj.CopyCo
 E:\New folder (3)\SurveyOnline\SurveyOnline\obj\Debug\SurveyOnline.dll
 E:\New folder (3)\SurveyOnline\SurveyOnline\obj\Debug\SurveyOnline.pdb
 E:\New folder (3)\SurveyOnline\SurveyOnline\obj\Debug\SurveyOnline.Migrations.surveyisActive.resources
+E:\New folder (3)\SurveyOnline\SurveyOnline\obj\Debug\SurveyOnline.Migrations.AnswerCollection.resources
+E:\New folder (3)\SurveyOnline\SurveyOnline\obj\Debug\SurveyOnline.Migrations.refixanswerCollection.resources
+E:\New folder (3)\SurveyOnline\SurveyOnline\obj\Debug\SurveyOnline.Migrations.refix.resources

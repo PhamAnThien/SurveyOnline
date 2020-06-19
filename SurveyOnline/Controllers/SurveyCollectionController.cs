@@ -14,7 +14,7 @@ namespace SurveyOnline.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: SurveyCollection
-        public  ActionResult  Index()
+        public ActionResult Index()
         {
             return View();
         }
@@ -61,9 +61,37 @@ namespace SurveyOnline.Controllers
             return View(survey);
         }
         [HttpPost]
-        public async Task<ActionResult> getSurveyAnswer(object value)
+        public async Task<ActionResult> getSurveyAnswer(string[][] data)
         {
 
+            string answerID = Guid.NewGuid().ToString();
+            try
+            {
+                foreach (var answer in data)
+                {
+                    var questionTypeID = db.QuestionSurveys.Find(int.Parse(answer[2])).QuestionTypeID;
+                    AnswerCollection a = new AnswerCollection()
+                    {
+                        ID= 0,
+                        AnswerID = answerID,
+                        SurveySubjectId = int.Parse(answer[0]),
+                        SurveyGroupID = int.Parse(answer[1]),
+                        SurveyQuestionTypeID = questionTypeID,
+                        SurveyQuestionID = int.Parse(answer[2]),
+                        SurveyAnswer = answer[3],
+                        UserID = HttpContext.User.Identity.Name,
+                        CreateDate = DateTime.Now
+
+                    };
+                    db.AnswerCollections.Add(a);
+                }
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
+
+            }
             return RedirectToAction("Index");
         }
     }

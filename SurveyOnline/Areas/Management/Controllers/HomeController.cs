@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace SurveyOnline.Areas.Management.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Management/Home

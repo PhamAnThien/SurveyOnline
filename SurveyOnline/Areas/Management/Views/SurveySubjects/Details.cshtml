@@ -78,6 +78,12 @@
                                                     <div class="ml-auto">
                                                         <a href="@Url.Action("Edit","QuestionSurveys",new {id =question.ID })" class="btn btn-info">Edit</a>
                                                         <a href="@Url.Action("Delete","QuestionSurveys",new {id =question.ID})" class="btn btn-warning">Delete</a>
+                                                        @if(question.QuestionTypeGroupID == 1)
+                                                        {
+                                                            <a href="@Url.Action("Create","Subquestions",new{ QuestionID = question.ID ,returnUrl = CurrentUrl})" >
+                                                                Add subquestion
+                                                            </a>
+                                                        }
                                                     </div>
                                                 </li>
                                             }

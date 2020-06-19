@@ -11,6 +11,7 @@ using SurveyOnline.Models;
 
 namespace SurveyOnline.Areas.Management.Controllers
 {
+    [Authorize]
     public class JobTitlesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

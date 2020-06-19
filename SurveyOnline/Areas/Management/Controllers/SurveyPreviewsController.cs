@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SurveyOnline.Areas.Management.Controllers
 {
+    [Authorize]
     public class SurveyPreviewsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

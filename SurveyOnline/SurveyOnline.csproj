@@ -283,7 +283,20 @@
     <Compile Include="Migrations\202006041836432_survey isActive.designer.cs">
       <DependentUpon>202006041836432_survey isActive.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006051220247_AnswerCollection.cs" />
+    <Compile Include="Migrations\202006051220247_AnswerCollection.designer.cs">
+      <DependentUpon>202006051220247_AnswerCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006190332316_re-fix answerCollection .cs" />
+    <Compile Include="Migrations\202006190332316_re-fix answerCollection .designer.cs">
+      <DependentUpon>202006190332316_re-fix answerCollection .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006190346586_re-fix .cs" />
+    <Compile Include="Migrations\202006190346586_re-fix .designer.cs">
+      <DependentUpon>202006190346586_re-fix .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AnswerCollection.cs" />
     <Compile Include="Models\AnswerTemplates.cs" />
     <Compile Include="Models\AnswerUnit.cs" />
     <Compile Include="Models\Branch.cs" />
@@ -3635,6 +3648,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006041836432_survey isActive.resx">
       <DependentUpon>202006041836432_survey isActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006051220247_AnswerCollection.resx">
+      <DependentUpon>202006051220247_AnswerCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006190332316_re-fix answerCollection .resx">
+      <DependentUpon>202006190332316_re-fix answerCollection .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006190346586_re-fix .resx">
+      <DependentUpon>202006190346586_re-fix .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

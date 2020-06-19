@@ -27,7 +27,7 @@
 
                 @Model.Description
             </div>
-            <form class="" action="@Url.Action("getSurveyAnswer")" method="post">
+            <form class="" method="post">
                 @foreach (var item in Model.SurveyGroups)
                 {
                     <div class="border rounded my-3 bg-white">
@@ -354,7 +354,16 @@
                     </text>
                 }
             }
-                        console.log(answerArr);
+            console.log(answerArr);
+            $.ajax({
+                url: '@Url.Action("getSurveyAnswer")',
+                data: { data: answerArr },
+                dataType:'json',
+                type: 'POST',
+                success: function () {
+                    alert("Send OK");
+                }
+            });
         }
     </script>
 

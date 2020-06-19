@@ -29,6 +29,7 @@ namespace SurveyOnline.Models
         public virtual DbSet<AnswerUnit> AnswerUnits { set; get; }
         public virtual DbSet<SurveyProfile> SurveyProfiles { set; get; }
         public virtual DbSet<Department> Departments { set; get; }
+        public virtual DbSet<AnswerCollection> AnswerCollections { set; get; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

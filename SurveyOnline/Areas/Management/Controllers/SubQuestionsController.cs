@@ -38,9 +38,15 @@ namespace SurveyOnline.Areas.Management.Controllers
         }
 
         // GET: Management/SubQuestions/Create
-        public ActionResult Create()
+        public ActionResult Create(int? QuestionID, string returnURL)
         {
-            ViewBag.QuestionID = new SelectList(db.QuestionSurveys.Where(q=>q.QuestionType.QuestionTypeGroupID == 1), "ID", "Question");
+            if (QuestionID != null)
+            {
+                ViewBag.QuestionID = new SelectList(db.QuestionSurveys.Where(q => q.ID == QuestionID), "ID", "Question");
+            }
+
+            else ViewBag.QuestionID = new SelectList(db.QuestionSurveys.Where(q => q.QuestionType.QuestionTypeGroupID == 1), "ID", "Question");
+            ViewBag.returnUrl = returnURL;
             return View();
         }
 
@@ -49,13 +55,16 @@ namespace SurveyOnline.Areas.Management.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,QuestionID,Question")] SubQuestion subQuestion)
+        public async Task<ActionResult> Create([Bind(Include = "ID,QuestionID,Question")] SubQuestion subQuestion, string returnURL)
         {
             if (ModelState.IsValid)
             {
                 db.SubQuestions.Add(subQuestion);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (string.IsNullOrEmpty(returnURL))
+                    return RedirectToAction("Index");
+                else
+                    return Redirect(returnURL);
             }
 
             ViewBag.QuestionID = new SelectList(db.QuestionSurveys, "ID", "Question", subQuestion.QuestionID);
