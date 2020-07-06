@@ -186,6 +186,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Management\Controllers\AnalysisController.cs" />
     <Compile Include="Areas\Management\Controllers\BranchesController.cs" />
     <Compile Include="Areas\Management\Controllers\CoursesController.cs" />
     <Compile Include="Areas\Management\Controllers\DepartmentsController.cs" />
@@ -296,6 +297,7 @@
       <DependentUpon>202006190346586_re-fix .cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AnswerAnalysis.cs" />
     <Compile Include="Models\AnswerCollection.cs" />
     <Compile Include="Models\AnswerTemplates.cs" />
     <Compile Include="Models\AnswerUnit.cs" />
@@ -2848,12 +2850,15 @@
     <Content Include="assets\vendor\sweetalert2\dist\sweetalert2.all.min.js" />
     <Content Include="assets\vendor\sweetalert2\dist\sweetalert2.min.css" />
     <Content Include="assets\vendor\sweetalert2\dist\sweetalert2.min.js" />
+    <Content Include="Content\argon.css" />
+    <Content Include="Content\argon.min.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -3443,6 +3448,8 @@
     <Content Include="Areas\Management\Views\ListTables\Details.cshtml" />
     <Content Include="Areas\Management\Views\ListTables\Edit.cshtml" />
     <Content Include="Areas\Management\Views\ListTables\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Analysis\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Analysis\Analiysis.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

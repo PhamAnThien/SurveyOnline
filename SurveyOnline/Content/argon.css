@@ -1,4 +1,4 @@
-@charset 'UTF-8';
+﻿@charset 'UTF-8';
 /*!
 
 =========================================================
@@ -296,7 +296,7 @@ caption
 
 th
 {
-    text-align: inherit;
+    text-align: center;
 }
 
 label
@@ -23752,7 +23752,7 @@ textarea[resize='horizontal']
 {
     font-size: .8125rem;
 
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 .table.align-items-center td,

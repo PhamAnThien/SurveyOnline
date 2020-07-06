@@ -53,13 +53,13 @@
 
                                         @if (Question.QuestionTypeGroupID == 1)
                                         {
-                                            <table class="table border">
-                                                <thead>
+                                            <table class="table border" style="width:100%;">
+                                                <thead style="width:100%;">
                                                     <tr>
                                                         <th></th>
                                                         @foreach (var answer in Question.ListAnswer)
                                                         {
-                                                            <th>@answer.Name</th>
+                                                            <th align="center" style="text-align:center;width:auto;">@answer.Name</th>
                                                         }
                                                     </tr>
                                                 </thead>
@@ -68,10 +68,8 @@
                                                     @foreach (var subQuest in Question.SubQuestions)
                                                     {
                                                         <tr>
-                                                            <td style="height:auto;">
-                                                                <p style="width:300px;">
-                                                                    @Html.Label(subQuest.Question ?? "Hello", htmlAttributes: new { @class = "control-label" })
-                                                                </p>
+                                                            <td style="height:auto;width:400px;">
+                                                                @Html.Label(subQuest.Question.Trim())
                                                             </td>
                                                             @foreach (var answer in Question.ListAnswer)
                                                             {
@@ -309,8 +307,8 @@
             {
                 foreach(var question in group.QuestionSurveys)
                 {
-                   
-                    if(question.QuestionTypeID == 30)
+
+                    if(question.QuestionTypeID <34)
                     {
                         <text>
                             var value = '';
@@ -318,26 +316,27 @@
                         foreach(var subQuest in question.SubQuestions)
                         {
                              <text>
-                                value += $("input:radio[name='@subQuest.ID']:checked").val() + ';';                              
+                                value += $("input:radio[name='@subQuest.ID']:checked").val() + ';';
                              </text>
                         }
+
                     }
-                    if(question.QuestionTypeID == 39)
+                    else if(question.QuestionTypeID == 39)
                     {
 
                     }
-                    if(question.QuestionTypeID == 40)
+                    else if(question.QuestionTypeID == 40)
                     {
 
                     }
-
-                    if(question.QuestionTypeID == 49)
+                    else if(question.QuestionTypeID == 49)
                     {
                         <text>
-            var value = $("input:radio[name='@question.ID']:checked").val();
+                            var value = '';
+                            value = $("input:radio[name='@question.ID']:checked").val();
                         </text>
                     }
-                    if( question.QuestionTypeID == 51 ||
+                    else if( question.QuestionTypeID == 51 ||
                         question.QuestionTypeID == 48 ||
                         question.QuestionTypeID == 42 ||
                         question.QuestionTypeID == 38 ||
@@ -345,13 +344,16 @@
                         )
                     {
                       <text>
-                        var value = $('#@question.ID')[0].value;
+                            var value = '';
+                            value = $('#@question.ID')[0].value;
                       </text>
                     }
                     <text>
-                        var data = [@Model.ID,@group.ID,@question.ID, value]
+            value.replace('undefined','0')
+                        var data = [@Model.ID, @group.ID, @question.ID, value]
                         answerArr.push(data);
                     </text>
+
                 }
             }
             console.log(answerArr);

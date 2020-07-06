@@ -78,7 +78,7 @@ namespace SurveyOnline.Controllers
                         SurveyGroupID = int.Parse(answer[1]),
                         SurveyQuestionTypeID = questionTypeID,
                         SurveyQuestionID = int.Parse(answer[2]),
-                        SurveyAnswer = answer[3],
+                        SurveyAnswer = answer[3]==null? "": answer[3],
                         UserID = HttpContext.User.Identity.Name,
                         CreateDate = DateTime.Now
 
